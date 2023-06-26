@@ -1,93 +1,20 @@
 import React from 'react'
-import Header from "./Components/header" 
+import ContentCard from "./Components/card" 
 import { useState } from "react";
 
 
-function App() {
- // console.log(alldata);
- let [count, setCount] = useState(0);
+function App({alldata}) {
 
-// const handleCount= () =>{
-//   setCount(count +1);
-// }
+  let [count, setCount] = useState(0);
 
-let alldata = [
-  {
-    productName: "Fancy Product",
-    price: "$40.00 - $80.00",
-    offer: false,
-    button: "View options",
-    sale: false,
-    rating: false,
-  },
-  {
-    productName: "Special Item",
-    price: "$20.00 $18.00",
-    offer: true,
-    button: "Add to cart",
-    sale: true,
-    rating: true,
-  },
-  {
-    productName: "Sale Item",
-    price: "$50.00 $25.00",
-    offer: true,
-    button: "Add to cart",
-    sale: true,
-    rating: false,
-  },
-  {
-    productName: "Popular Item",
-    price: "$40.00",
-    offer: false,
-    button: "Add to cart",
-    sale: false,
-    rating: true,
-  },
-  {
-    productName: "Sale Item",
-    price: "$50.00 $25.00",
-    offer: true,
-    button: "Add to cart",
-    sale: true,
-    rating: false,
-  },
-  {
-    productName: "Fancy Product",
-    price: "$120.00 - $280.00",
-    offer: false,
-    button: "View options",
-    sale: false,
-    rating: false,
-  },
-  {
-    productName: "Special Item",
-    price: "$20.00 $18.00",
-    offer: true,
-    button: "Add to cart",
-    sale: true,
-    rating: true,
-  },
-  {
-    productName: "Popular Item",
-    price: "$40.00",
-    offer: false,
-    button: "Add to cart",
-    sale: false,
-    rating: true,
-  },
-];
-
- 
-
-  let handleCount = (click) => {
-    if (click.target.innerHTML === "Add to cart") {
+  let handleCount = (event) => {
+    if (event.target.innerHTML === "Add to cart") {
       setCount(count + 1);
-      click.target.innerHTML = "Remove";
+      event.target.innerHTML = "Remove cart";
      
-    } else if (click.target.innerHTML === "Remove") {
+    } else if (event.target.innerHTML === "Remove cart") {
       setCount(count - 1);
-      click.target.innerHTML = "Add to cart";
+      event.target.innerHTML = "Add to cart";
     
     }
   };
@@ -135,8 +62,8 @@ let Currentyear=new Date().getFullYear();
       <div className="container px-4 px-lg-5 mt-5">
         <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-        {alldata.map((value, index) => (
-            <Header key={index} data={value} handleCount={handleCount} />
+        {alldata.map((value, index ,array) => (
+            <ContentCard key={index} data={value} handleCount={handleCount} />
           ))}
 
           </div>
